@@ -125,7 +125,7 @@ class DQNAgent:
 def reset_pos():
     x = random.randint(1000, 50000)
     print(x)
-    alt = tan(radians(3)) * (x - 1000)
+    alt = tan(radians(3)) * (x + 2000)
     brng = radians(RWY_head - 180)
     lat1 = radians(RWY_lat)
     lon1 = radians(RWY_lon)
@@ -207,7 +207,7 @@ def calc_glideslope_reward():
     y = r * sin(radians(phi))
     distance_x = x
     distance_y = y
-    glideslope_alt = tan(radians(3)) * (x - 1000)
+    glideslope_alt = tan(radians(3)) * (x + 2000)
     if glideslope_alt < 0:
         glideslope_alt = 0
     plane_alt = aq.get(ALTITUDE)
