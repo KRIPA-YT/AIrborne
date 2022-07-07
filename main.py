@@ -213,7 +213,7 @@ def calc_glideslope_reward():
     plane_alt = aq.get(ALTITUDE)
     diff_alt = abs(glideslope_alt - plane_alt)
     distance = sqrt(pow(diff_alt, 2) + pow(y, 2))
-    return sigmoid(distance / 2000 - 3) * -2 + 1
+    return sigmoid(distance / 20 - 3) * -2 + 1
 
 
 def calc_localizer_reward():
