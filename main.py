@@ -62,6 +62,7 @@ distance_y = 0
 RWY_lat = 50.040059
 RWY_lon = 8.586546
 RWY_head = 249.5
+RWY_length = 12123
 
 earth_radius_feet = 20902000
 
@@ -212,7 +213,10 @@ def calc_glideslope_reward():
         glideslope_alt = 0
     plane_alt = aq.get(ALTITUDE)
     diff_alt = abs(glideslope_alt - plane_alt)
-    distance = sqrt(pow(diff_alt, 2) + pow(y, 2))
+    if x * -1 > RWY_length:
+        distance = sqrt(pow(diff_alt, 2) + pow(sqrt(pow(y, 2) + pow(x * -1 - RWY_length, 2)), 2))
+    else:
+        distance = sqrt(pow(diff_alt, 2) + pow(y, 2))
     return sigmoid(distance / 20 - 3) * -2 + 1
 
 
